@@ -1,0 +1,14 @@
+---
+- hosts: qa
+  tasks:
+    - name: Kernel
+      debug: msg="Hello {{ansible_kernel}}"
+    - name: Hostname
+      debug: msg="Hello {{ansible_hostname}}"
+    - name: Distribution
+      debug: msg="Hello {{ansible_distribution}}"
+    - debug: var=ansible_architecture
+    - debug: var=hostvars
+    - debug: var=inventory_hostname
+    - debug: var=groups
+    - debug: var=group_names
