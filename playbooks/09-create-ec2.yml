@@ -1,0 +1,19 @@
+---
+- name: ec2 launcher
+  hosts: localhost
+  tasks:
+  - name: launch ec2
+    ec2:
+      key_name: ansible-ubuntu
+      instance_type: t2.micro
+      image: ami-0753e0e42b20e96e3
+      region: ap-southeast-1
+      count: 1
+      vpc_subnet_id: subnet-031d7baf9723f949f
+      assign_public_ip: yes
+      group: ["http_server_sg_new"]
+      instance_tags: {type: http, Environment: QA}
+      wait: yes
+    register: ec2_output
+    debug: var=ec2_output
+      
